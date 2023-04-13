@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.9" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+    <Property name="undecorated" type="boolean" value="true"/>
+    <Property name="resizable" type="boolean" value="false"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+    <SyntheticProperty name="generateCenter" type="boolean" value="true"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Component id="jPanel1" alignment="0" max="32767" attributes="0"/>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Container class="javax.swing.JPanel" name="jPanel1">
+      <Properties>
+        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+          <Color blue="ff" green="ff" red="ff" type="rgb"/>
+        </Property>
+        <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+          <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
+            <LineBorder/>
+          </Border>
+        </Property>
+      </Properties>
+
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace pref="401" max="32767" attributes="0"/>
+                  <Component id="close" min="-2" pref="30" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="70" max="-2" attributes="0"/>
+                      <Component id="tableScrollButton1" min="-2" pref="458" max="-2" attributes="0"/>
+                      <EmptySpace pref="72" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="29" max="-2" attributes="0"/>
+                          <Component id="jLabel4" min="-2" pref="47" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="close" min="-2" pref="30" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <EmptySpace pref="322" max="32767" attributes="0"/>
+              </Group>
+              <Group type="103" rootIndex="1" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="123" max="32767" attributes="0"/>
+                      <Component id="tableScrollButton1" min="-2" pref="277" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
+      </Layout>
+      <SubComponents>
+        <Container class="design.TableScrollButton" name="tableScrollButton1">
+
+          <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
+          <SubComponents>
+            <Container class="design.JScrollPaneCustom" name="jScrollPaneCustom1">
+              <Properties>
+                <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                  <Border info="null"/>
+                </Property>
+              </Properties>
+              <Constraints>
+                <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+                  <BorderConstraints direction="Center"/>
+                </Constraint>
+              </Constraints>
+
+              <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+              <SubComponents>
+                <Component class="javax.swing.JTextPane" name="jTextPane1">
+                  <Properties>
+                    <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
+                      <Border info="null"/>
+                    </Property>
+                    <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                      <Color blue="33" green="33" red="33" type="rgb"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="End User Agreement:&#xa;&#xa;Welcome to Finance Fox, the online banking system that helps you manage your finances from the comfort of your home. By using Finance Fox, you agree to the following terms and conditions:&#xa;&#xa;Eligibility: You must be at least 18 years old and a legal resident of the country in which you reside to use Finance Fox. You must also have a valid email address and mobile phone number.&#xa;&#xa;Account Creation: To use Finance Fox, you must create an account with a unique username and password. You are responsible for maintaining the confidentiality of your username and password.&#xa;&#xa;Security: You agree to take all necessary steps to ensure the security of your account, including not sharing your login credentials with anyone else. You are responsible for all actions taken using your account.&#xa;&#xa;Use of Information: Finance Fox may collect personal and financial information from you to provide its services. You agree that Finance Fox may use this information to provide you with its services and to improve its products and services.&#xa;&#xa;Fees: Finance Fox may charge fees for its services. These fees will be clearly disclosed to you before you use any service that incurs a fee.&#xa;&#xa;Termination: Finance Fox may terminate your account at any time, for any reason, with or without notice.&#xa;&#xa;Indemnification: You agree to indemnify and hold Finance Fox harmless from any claims, damages, or losses arising from your use of its services.&#xa;&#xa;Governing Law: This agreement is governed by the laws of the country in which you reside.&#xa;&#xa;&#xa;All About Us:&#xa;&#xa;Welcome to Finance Fox, the online banking system that provides a friendly space for your transactions. Our mission is to make banking less of a hassle and more of a pleasant experience for you. We strive to be a reliable and efficient banking platform for our users.&#xa;&#xa;Our Vision:&#xa;Our vision is to become an internationally recognized organization that provides friendly, efficient, and reliable banking services to a larger audience. We believe that banking should be accessible to everyone, regardless of their location or financial background.&#xa;&#xa;Our Services:&#xa;Finance Fox offers a range of services to help you manage your finances, including:&#xa;&#xa;Deposit: You can deposit funds into your Finance Fox account through various methods, including bank transfers and credit/debit card payments.&#xa;Withdraw: You can withdraw funds from your Finance Fox account through various methods, including bank transfers and ATM withdrawals.&#xa;Transfer Funds: You can transfer funds between Finance Fox accounts or to other bank accounts.&#xa;Pay Bills: You can pay your bills online through Finance Fox.&#xa;Transaction History: You can view your transaction history and account balances at any time through our platform.&#xa;Our Team:&#xa;Finance Fox was created by a single person who made the system from scratch. Franc Alvenn Dela Cruz is a BSIT first-year college student from Dr. Yanga&apos;s Colleges, Inc. He has a passion for technology and has been developing software since he was in high school. He built Finance Fox to help people manage their finances in a user-friendly way.&#xa;&#xa;Contact Us:&#xa;If you have any questions or concerns, please don&#x2019;t hesitate to contact us. You can reach us by email or through our website. We value your feedback and suggestions and are always looking for ways to improve our services. Thank you for choosing Finance Fox for your banking needs."/>
+                    <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                      <Dimension value="[600, 400]"/>
+                    </Property>
+                  </Properties>
+                </Component>
+              </SubComponents>
+            </Container>
+          </SubComponents>
+        </Container>
+        <Component class="javax.swing.JLabel" name="jLabel4">
+          <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Segoe UI" size="24" style="1"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="ABOUT US!"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="close">
+          <Properties>
+            <Property name="horizontalAlignment" type="int" value="0"/>
+          </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="closeMouseClicked"/>
+          </Events>
+        </Component>
+      </SubComponents>
+    </Container>
+  </SubComponents>
+</Form>
