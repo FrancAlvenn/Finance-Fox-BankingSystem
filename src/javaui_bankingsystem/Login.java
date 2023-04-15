@@ -228,7 +228,7 @@ public class Login extends javax.swing.JFrame {
                 .addGap(37, 37, 37))
         );
 
-        jPanel2.setBackground(new java.awt.Color(0, 155, 255));
+        jPanel2.setBackground(new java.awt.Color(102, 204, 255));
 
         fox.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
