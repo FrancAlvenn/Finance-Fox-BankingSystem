@@ -313,7 +313,7 @@ public class MainFrame extends javax.swing.JFrame {
         disUserName.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         disUserName.setText("USER NAME");
 
-        jLabel1.setBackground(new java.awt.Color(55, 105, 241));
+        jLabel1.setBackground(new java.awt.Color(0, 153, 255));
         jLabel1.setForeground(new java.awt.Color(0, 153, 255));
         jLabel1.setOpaque(true);
 
@@ -327,7 +327,7 @@ public class MainFrame extends javax.swing.JFrame {
 
         jButton1.setBorder(null);
 
-        jLabel12.setBackground(new java.awt.Color(55, 105, 241));
+        jLabel12.setBackground(new java.awt.Color(0, 153, 255));
         jLabel12.setForeground(new java.awt.Color(0, 153, 255));
         jLabel12.setOpaque(true);
 
