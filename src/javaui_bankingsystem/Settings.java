@@ -43,7 +43,8 @@ public class Settings extends javax.swing.JFrame implements Admin_Data{
         jLabel7 = new javax.swing.JLabel();
         _tempNewPIN = new javax.swing.JTextField();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Finance Fox");
         setUndecorated(true);
         setResizable(false);
 

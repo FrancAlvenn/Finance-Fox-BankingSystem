@@ -23,6 +23,7 @@ public class Contact extends javax.swing.JFrame implements Admin_Data{
         customButton1 = new design.CustomButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Finance Fox");
         setUndecorated(true);
         setResizable(false);
 

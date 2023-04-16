@@ -81,7 +81,8 @@ public class Transaction_History extends javax.swing.JFrame implements Admin_Dat
         jScrollPane1 = new javax.swing.JScrollPane();
         dataTable = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Finance Fox");
         setUndecorated(true);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
