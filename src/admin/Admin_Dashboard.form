@@ -159,31 +159,49 @@
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="menuIconMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="addProfileIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="addProfileIconMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="updateProfileIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="updateProfileIconMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="searchIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="searchIconMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="deleteIcon">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="deleteIconMouseClicked"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JLabel" name="logout">
               <Properties>
                 <Property name="horizontalAlignment" type="int" value="0"/>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="logoutMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>

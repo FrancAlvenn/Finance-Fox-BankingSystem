@@ -73,19 +73,24 @@ public class Admin_Dashboard extends javax.swing.JFrame {
                 System.out.println(index);
                 switch (index) {
                     case 0:
-                        
+                        Add_Profile ad = new Add_Profile();
+                        ad.show();
+                        dispose();
                         break;
                     case 1:
-                        
+                        Update up = new Update();
+                        up.show();
+                        dispose();
                         break;
                     case 2:
-                        
+                        Search se = new Search();
+                        se.show();
+                        dispose();
                         break;
                     case 3:
-                        
-                        break;
-                    case 4:
-                        
+                        Delete dt = new Delete();
+                        dt.show();
+                        dispose();
                         break;
                     case 5:
                         int _temp = JOptionPane.showConfirmDialog(null, "Confirm Logout ...", "LOGOUT", JOptionPane.YES_NO_OPTION);
@@ -207,16 +212,46 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         });
 
         menuIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuIconMouseClicked(evt);
+            }
+        });
 
         addProfileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addProfileIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addProfileIconMouseClicked(evt);
+            }
+        });
 
         updateProfileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateProfileIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateProfileIconMouseClicked(evt);
+            }
+        });
 
         searchIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
+            }
+        });
 
         deleteIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteIconMouseClicked(evt);
+            }
+        });
 
         logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -491,6 +526,49 @@ public class Admin_Dashboard extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void addProfileIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addProfileIconMouseClicked
+        
+        Add_Profile ad = new Add_Profile();
+        ad.show();
+        dispose();
+        
+    }//GEN-LAST:event_addProfileIconMouseClicked
+
+    private void updateProfileIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateProfileIconMouseClicked
+        Update up = new Update();
+        up.show();
+        dispose();
+    }//GEN-LAST:event_updateProfileIconMouseClicked
+
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+       Search se = new Search();
+       se.show();
+       dispose();
+    }//GEN-LAST:event_searchIconMouseClicked
+
+    private void deleteIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteIconMouseClicked
+        Delete dt = new Delete();
+        dt.show();
+        dispose();
+    }//GEN-LAST:event_deleteIconMouseClicked
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        int _temp = JOptionPane.showConfirmDialog(null, "Confirm Logout ...", "LOGOUT", JOptionPane.YES_NO_OPTION);
+            if( _temp == 0){
+                Login log = new Login();
+                log.show();  
+                dispose();
+            }
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void menuIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIconMouseClicked
+       if (drawer.isShow()) {
+            drawer.hide();
+        } else {
+            drawer.show();
+        }
+    }//GEN-LAST:event_menuIconMouseClicked
 
     
     
