@@ -3,7 +3,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package admin;
-
+import static admin.Admin_Data.*;
+import design.GlassPanePopup;
+import java.sql.*;
+import javaui_bankingsystem.*;
+import static javaui_bankingsystem.Message.msgbody;
+import static javaui_bankingsystem.Message.msgtitle;
 /**
  *
  * @author Administrator
@@ -15,6 +20,10 @@ public class Update extends javax.swing.JFrame {
      */
     public Update() {
         initComponents();
+        GlassPanePopup.install(this);
+        this.setIconImage(brandIconSVG);
+        close.setIcon(closeSVG);
+        searchIcon.setIcon(searchSVG);
     }
 
     /**
@@ -27,65 +36,76 @@ public class Update extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        accountNumber6 = new javax.swing.JTextField();
-        citizenship6 = new javax.swing.JTextField();
+        accountNumber = new javax.swing.JTextField();
+        citizenship = new javax.swing.JTextField();
         jLabel135 = new javax.swing.JLabel();
         jLabel136 = new javax.swing.JLabel();
-        name6 = new javax.swing.JTextField();
+        name = new javax.swing.JTextField();
         jLabel137 = new javax.swing.JLabel();
         jLabel138 = new javax.swing.JLabel();
-        password6 = new javax.swing.JTextField();
+        pass = new javax.swing.JTextField();
         jLabel139 = new javax.swing.JLabel();
         jLabel140 = new javax.swing.JLabel();
-        phoneNumber6 = new javax.swing.JTextField();
+        phoneNumber = new javax.swing.JTextField();
         jLabel141 = new javax.swing.JLabel();
         jLabel142 = new javax.swing.JLabel();
         jLabel143 = new javax.swing.JLabel();
-        gender6 = new javax.swing.JTextField();
+        gender = new javax.swing.JTextField();
         jLabel146 = new javax.swing.JLabel();
         jLabel147 = new javax.swing.JLabel();
         jLabel148 = new javax.swing.JLabel();
-        maritalStatus6 = new javax.swing.JTextField();
+        maritalStatus = new javax.swing.JTextField();
         jLabel149 = new javax.swing.JLabel();
         jLabel150 = new javax.swing.JLabel();
-        email6 = new javax.swing.JTextField();
+        email = new javax.swing.JTextField();
         jLabel151 = new javax.swing.JLabel();
         jLabel152 = new javax.swing.JLabel();
-        address6 = new javax.swing.JTextField();
+        address = new javax.swing.JTextField();
         jLabel153 = new javax.swing.JLabel();
         jLabel154 = new javax.swing.JLabel();
         jLabel155 = new javax.swing.JLabel();
         jLabel156 = new javax.swing.JLabel();
-        close6 = new javax.swing.JLabel();
+        close = new javax.swing.JLabel();
+        balance = new javax.swing.JTextField();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        adminSignature = new javax.swing.JTextField();
+        customButton1 = new design.CustomButton();
+        searchIcon = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setUndecorated(true);
+        setResizable(false);
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        accountNumber6.setBorder(null);
+        accountNumber.setBorder(null);
 
-        citizenship6.setBorder(null);
+        citizenship.setBorder(null);
 
         jLabel135.setBackground(new java.awt.Color(0, 153, 255));
         jLabel135.setOpaque(true);
 
         jLabel136.setText("Citizenship");
 
-        name6.setBorder(null);
+        name.setBorder(null);
 
         jLabel137.setText("Name");
 
         jLabel138.setBackground(new java.awt.Color(0, 153, 255));
         jLabel138.setOpaque(true);
 
-        password6.setBorder(null);
+        pass.setBorder(null);
 
         jLabel139.setBackground(new java.awt.Color(0, 153, 255));
         jLabel139.setOpaque(true);
 
         jLabel140.setText("Password");
 
-        phoneNumber6.setBorder(null);
+        phoneNumber.setBorder(null);
 
         jLabel141.setBackground(new java.awt.Color(0, 153, 255));
         jLabel141.setOpaque(true);
@@ -95,7 +115,7 @@ public class Update extends javax.swing.JFrame {
         jLabel143.setBackground(new java.awt.Color(0, 153, 255));
         jLabel143.setOpaque(true);
 
-        gender6.setBorder(null);
+        gender.setBorder(null);
 
         jLabel146.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel146.setText("UPDATE");
@@ -105,21 +125,21 @@ public class Update extends javax.swing.JFrame {
         jLabel148.setBackground(new java.awt.Color(0, 153, 255));
         jLabel148.setOpaque(true);
 
-        maritalStatus6.setBorder(null);
+        maritalStatus.setBorder(null);
 
         jLabel149.setText("Marital Status");
 
         jLabel150.setBackground(new java.awt.Color(0, 153, 255));
         jLabel150.setOpaque(true);
 
-        email6.setBorder(null);
+        email.setBorder(null);
 
         jLabel151.setText("Email");
 
         jLabel152.setBackground(new java.awt.Color(0, 153, 255));
         jLabel152.setOpaque(true);
 
-        address6.setBorder(null);
+        address.setBorder(null);
 
         jLabel153.setText("Account Number");
 
@@ -131,10 +151,40 @@ public class Update extends javax.swing.JFrame {
         jLabel156.setBackground(new java.awt.Color(0, 153, 255));
         jLabel156.setOpaque(true);
 
-        close6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        close6.addMouseListener(new java.awt.event.MouseAdapter() {
+        close.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        close.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                close6MouseClicked(evt);
+                closeMouseClicked(evt);
+            }
+        });
+
+        balance.setBorder(null);
+
+        jLabel27.setText("Balance");
+
+        jLabel28.setBackground(new java.awt.Color(0, 153, 255));
+        jLabel28.setOpaque(true);
+
+        jLabel24.setBackground(new java.awt.Color(0, 153, 255));
+        jLabel24.setOpaque(true);
+
+        jLabel23.setText("Admin Signature");
+
+        adminSignature.setBorder(null);
+
+        customButton1.setBackground(new java.awt.Color(0, 153, 255));
+        customButton1.setForeground(new java.awt.Color(255, 255, 255));
+        customButton1.setText("Confirm");
+        customButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customButton1ActionPerformed(evt);
+            }
+        });
+
+        searchIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
             }
         });
 
@@ -145,9 +195,30 @@ public class Update extends javax.swing.JFrame {
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addGap(45, 45, 45)
                 .addComponent(jLabel146, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 804, Short.MAX_VALUE)
-                .addComponent(close6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 802, Short.MAX_VALUE)
+                .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(17, 17, 17))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(customButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel23)
+                        .addComponent(adminSignature, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(51, 51, 51))
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(376, 376, 376)
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel27)
+                            .addComponent(balance)
+                            .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGap(350, 350, 350)
+                        .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,40 +232,40 @@ public class Update extends javax.swing.JFrame {
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel155, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel153)
-                                    .addComponent(accountNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(accountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGroup(jPanel4Layout.createSequentialGroup()
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel139, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel137)
-                                            .addComponent(name6, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel143, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel142)
-                                            .addComponent(phoneNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                            .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addGap(50, 50, 50)
                                     .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(jLabel152, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel151)
-                                            .addComponent(email6, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                                         .addGroup(jPanel4Layout.createSequentialGroup()
                                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel147)
-                                                .addComponent(gender6)
+                                                .addComponent(gender)
                                                 .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(36, 36, 36)
                                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel149)
-                                                .addComponent(maritalStatus6)
+                                                .addComponent(maritalStatus)
                                                 .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGap(36, 36, 36)
                                             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                                 .addComponent(jLabel136)
-                                                .addComponent(citizenship6)
+                                                .addComponent(citizenship)
                                                 .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                                .addComponent(address6, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(password6, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(jLabel135, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -209,8 +280,24 @@ public class Update extends javax.swing.JFrame {
                         .addComponent(jLabel146))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(16, 16, 16)
-                        .addComponent(close6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(516, Short.MAX_VALUE))
+                        .addComponent(close, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(65, 65, 65)
+                .addComponent(searchIcon, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 213, Short.MAX_VALUE)
+                .addComponent(jLabel27)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(balance, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel28, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(46, 46, 46)
+                .addComponent(jLabel23)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(adminSignature, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(customButton1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(22, 22, 22))
             .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel4Layout.createSequentialGroup()
                     .addGap(78, 78, 78)
@@ -218,7 +305,7 @@ public class Update extends javax.swing.JFrame {
                     .addGap(33, 33, 33)
                     .addComponent(jLabel153)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(accountNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(accountNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel155, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
@@ -226,25 +313,25 @@ public class Update extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel137)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(name6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(name, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel139, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel147)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(gender6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(gender, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel148, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel149)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(maritalStatus6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(maritalStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel150, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel136)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(citizenship6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(citizenship, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel138, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(18, 18, 18)
@@ -252,25 +339,25 @@ public class Update extends javax.swing.JFrame {
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel142)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(phoneNumber6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(phoneNumber, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel143, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGroup(jPanel4Layout.createSequentialGroup()
                             .addComponent(jLabel151)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(email6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(email, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                             .addComponent(jLabel152, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGap(18, 18, 18)
                     .addComponent(jLabel154)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(address6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel156, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGap(18, 18, 18)
                     .addComponent(jLabel140)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(password6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel141, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(165, Short.MAX_VALUE)))
@@ -288,13 +375,113 @@ public class Update extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void close6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_close6MouseClicked
+    private void closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_closeMouseClicked
         Admin_Dashboard ad= new Admin_Dashboard();
         ad.show();
         dispose();
-    }//GEN-LAST:event_close6MouseClicked
+    }//GEN-LAST:event_closeMouseClicked
+
+    private void customButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customButton1ActionPerformed
+        if(adminSignature.getText().equals("financefox")){
+            try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                Connection connection = DriverManager.getConnection(database, username, password);
+                ResultSet rs;
+                PreparedStatement statement = connection.prepareStatement("SELECT * FROM `bank_user` WHERE `Account_Number` = ?");
+                statement.setString(1, accountNumber.getText());
+                rs = statement.executeQuery();
+
+                if(rs.next()){
+                    statement = connection.prepareStatement("UPDATE bank_user SET name = ?, Gender = ?, Marital_Status = ?, "
+                            + "Citizenship = ?, Phone_Number = ?, Email = ?, Address = ?, Password = ?, Balance = ? WHERE Account_Number = ?");
+                    statement.setString(1, name.getText());
+                    statement.setString(2, gender.getText());
+                    statement.setString(3, maritalStatus.getText());
+                    statement.setString(4, citizenship.getText());
+                    statement.setString(5, phoneNumber.getText());
+                    statement.setString(6, email.getText());
+                    statement.setString(7, address.getText());
+                    statement.setString(8, pass.getText());
+                    statement.setString(9, balance.getText());
+                    statement.setString(10, accountNumber.getText());
+                    
+                    statement.executeUpdate();
+                    
+                    name.setText("");
+                    gender.setText("");
+                    maritalStatus.setText("");
+                    citizenship.setText("");
+                    email.setText("");
+                    phoneNumber.setText("");
+                    address.setText("");
+                    pass.setText("");
+                    balance.setText("");
+                    adminSignature.setText("");
+                    accountNumber.setText("");
+
+                    //JOptionPane.showConfirmDialog(null, "Account has been deleted!", "Account Deletion", 0);
+                    msgtitle = "Account Update!";
+                    msgbody = ("Account has been updated!");
+                    GlassPanePopup.showPopup(new Message());
+                }else{
+                    msgtitle = "NOTICE!";
+                    msgbody = ("Account does not exist! Please try again!!");
+                    GlassPanePopup.showPopup(new Message());
+                }
+            }catch(ClassNotFoundException | SQLException ex){
+                msgtitle = "NOTICE!";
+                msgbody = ("Something went wrong! Please try again!");
+                GlassPanePopup.showPopup(new Message());
+            }
+
+        }else{
+            msgtitle = "NOTICE!";
+            msgbody = ("Wrong admin signature! PLease try again");
+            GlassPanePopup.showPopup(new Message());
+        }
+
+    }//GEN-LAST:event_customButton1ActionPerformed
+
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            Connection connection = DriverManager.getConnection(database, username, password);
+            ResultSet rs;
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM `bank_user` WHERE `Account_Number` = ?");
+            statement.setString(1, accountNumber.getText());
+            rs = statement.executeQuery();
+
+            if(rs.next()){
+                statement = connection.prepareStatement("SELECT * FROM bank_user WHERE Account_Number = ?");
+                statement.setString(1, accountNumber.getText());
+                ResultSet resultSet = statement.executeQuery();
+                resultSet.next();
+                name.setText(resultSet.getString("Name"));
+                gender.setText(resultSet.getString("Gender"));
+                maritalStatus.setText(resultSet.getString("Marital_Status"));
+                citizenship.setText(resultSet.getString("Citizenship"));
+                email.setText(resultSet.getString("Email"));
+                phoneNumber.setText(resultSet.getString("Phone_Number"));
+                address.setText(resultSet.getString("Address"));
+                pass.setText(resultSet.getString("Password"));
+                balance.setText(resultSet.getString("Balance"));
+                
+                accountNumber.setEditable(false);
+            }else{
+                msgtitle = "NOTICE!";
+                msgbody = ("Account does not exist! Please try again!!");
+                GlassPanePopup.showPopup(new Message());
+            }
+
+        }catch(ClassNotFoundException | SQLException ex){
+            msgtitle = "NOTICE!";
+            msgbody = ("Something went wrong! Please try again!");
+            GlassPanePopup.showPopup(new Message());
+        }
+    }//GEN-LAST:event_searchIconMouseClicked
 
     /**
      * @param args the command line arguments
@@ -332,12 +519,15 @@ public class Update extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField accountNumber6;
-    private javax.swing.JTextField address6;
-    private javax.swing.JTextField citizenship6;
-    private javax.swing.JLabel close6;
-    private javax.swing.JTextField email6;
-    private javax.swing.JTextField gender6;
+    private javax.swing.JTextField accountNumber;
+    private javax.swing.JTextField address;
+    private javax.swing.JTextField adminSignature;
+    private javax.swing.JTextField balance;
+    private javax.swing.JTextField citizenship;
+    private javax.swing.JLabel close;
+    private design.CustomButton customButton1;
+    private javax.swing.JTextField email;
+    private javax.swing.JTextField gender;
     private javax.swing.JLabel jLabel135;
     private javax.swing.JLabel jLabel136;
     private javax.swing.JLabel jLabel137;
@@ -358,10 +548,15 @@ public class Update extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel154;
     private javax.swing.JLabel jLabel155;
     private javax.swing.JLabel jLabel156;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JPanel jPanel4;
-    private javax.swing.JTextField maritalStatus6;
-    private javax.swing.JTextField name6;
-    private javax.swing.JTextField password6;
-    private javax.swing.JTextField phoneNumber6;
+    private javax.swing.JTextField maritalStatus;
+    private javax.swing.JTextField name;
+    private javax.swing.JTextField pass;
+    private javax.swing.JTextField phoneNumber;
+    private javax.swing.JLabel searchIcon;
     // End of variables declaration//GEN-END:variables
 }
