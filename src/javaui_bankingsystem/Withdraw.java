@@ -39,7 +39,8 @@ public class Withdraw extends javax.swing.JFrame implements Admin_Data{
         close = new javax.swing.JLabel();
         customButton1 = new design.CustomButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Finance Fox");
         setBackground(new java.awt.Color(255, 255, 255));
         setUndecorated(true);
 

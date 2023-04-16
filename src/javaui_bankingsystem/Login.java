@@ -1,6 +1,7 @@
 
 package javaui_bankingsystem;
 
+import admin.Admin_Dashboard;
 import admin.Admin_Data;
 import design.GlassPanePopup;
 import java.sql.Connection;
@@ -105,6 +106,7 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
         fox = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Finance Fox");
         setBackground(new java.awt.Color(236, 237, 239));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -297,12 +299,16 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
                     Ui.pack();
                     Ui.setLocationRelativeTo(null); 
                     this.dispose();
+            }else if(uname.equals("admin") && pass.equals("admin")){
+                Admin_Dashboard ad = new Admin_Dashboard();
+                ad.show();
+                dispose();
             }
             else{
                 msgtitle = "NOTICE!";
                 msgbody = ("Incorrect Username Or Password! Please try again!");
                 GlassPanePopup.showPopup(new Message());
-                }
+            }
             
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null,ex);

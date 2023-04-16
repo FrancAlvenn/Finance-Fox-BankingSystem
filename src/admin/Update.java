@@ -76,6 +76,7 @@ public class Update extends javax.swing.JFrame {
         searchIcon = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        setTitle("Admin Control");
         setUndecorated(true);
         setResizable(false);
 

@@ -28,6 +28,7 @@ public class About extends javax.swing.JFrame implements Admin_Data{
         close = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Finance Fox");
         setUndecorated(true);
         setResizable(false);
 
