@@ -2,10 +2,8 @@
 package admin;
 
 import javaui_bankingsystem.*;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import design.TableCustom;
 import java.awt.Color;
-import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,31 +15,15 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javaswingdev.drawer.EventDrawer;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 
-public class Admin_Dashboard extends javax.swing.JFrame {
+public class Admin_Dashboard extends javax.swing.JFrame implements Admin_Data{
 
     private final DrawerController drawer;
-    ImageIcon menuBarsSVG = new FlatSVGIcon("icon/MenuBars.svg",20,20);
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon logoutSVG = new FlatSVGIcon("icon/Logout.svg",20,20);
-    ImageIcon mbSearchSVG = new FlatSVGIcon("icon/Search_Icon.svg",20,20);
-    ImageIcon addUserSVG = new FlatSVGIcon("icon/Add_User.svg",25,20);
-    ImageIcon updateSVG = new FlatSVGIcon("icon/Update.svg",20,20);
-    ImageIcon deleteSVG = new FlatSVGIcon("icon/Delete.svg",18,20);
-    ImageIcon searchSVG = new FlatSVGIcon("icon/Search_Icon.svg",20,20);
-
     
-    static final String username = "root";
-    static final String password = "";
-    static final String database = "jdbc:mysql://localhost/finance_fox";
     static int q, i;
-    static String value, userNameDis = "";
-    static Double balance = 0.0, currentValue = 0.0;
-    static String[] info = {"0","1","2","3","4","5","6"};
     
     
     static Connection sqlConn = null;
@@ -73,19 +55,24 @@ public class Admin_Dashboard extends javax.swing.JFrame {
                 System.out.println(index);
                 switch (index) {
                     case 0:
-                        
+                        Add_Profile ad = new Add_Profile();
+                        ad.show();
+                        dispose();
                         break;
                     case 1:
-                        
+                        Update up = new Update();
+                        up.show();
+                        dispose();
                         break;
                     case 2:
-                        
+                        Search se = new Search();
+                        se.show();
+                        dispose();
                         break;
                     case 3:
-                        
-                        break;
-                    case 4:
-                        
+                        Delete dt = new Delete();
+                        dt.show();
+                        dispose();
                         break;
                     case 5:
                         int _temp = JOptionPane.showConfirmDialog(null, "Confirm Logout ...", "LOGOUT", JOptionPane.YES_NO_OPTION);
@@ -207,16 +194,46 @@ public class Admin_Dashboard extends javax.swing.JFrame {
         });
 
         menuIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        menuIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                menuIconMouseClicked(evt);
+            }
+        });
 
         addProfileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        addProfileIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                addProfileIconMouseClicked(evt);
+            }
+        });
 
         updateProfileIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        updateProfileIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                updateProfileIconMouseClicked(evt);
+            }
+        });
 
         searchIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        searchIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                searchIconMouseClicked(evt);
+            }
+        });
 
         deleteIcon.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        deleteIcon.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                deleteIconMouseClicked(evt);
+            }
+        });
 
         logout.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        logout.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                logoutMouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -491,6 +508,49 @@ public class Admin_Dashboard extends javax.swing.JFrame {
     private void deleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_deleteActionPerformed
+
+    private void addProfileIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addProfileIconMouseClicked
+        
+        Add_Profile ad = new Add_Profile();
+        ad.show();
+        dispose();
+        
+    }//GEN-LAST:event_addProfileIconMouseClicked
+
+    private void updateProfileIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateProfileIconMouseClicked
+        Update up = new Update();
+        up.show();
+        dispose();
+    }//GEN-LAST:event_updateProfileIconMouseClicked
+
+    private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
+       Search se = new Search();
+       se.show();
+       dispose();
+    }//GEN-LAST:event_searchIconMouseClicked
+
+    private void deleteIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteIconMouseClicked
+        Delete dt = new Delete();
+        dt.show();
+        dispose();
+    }//GEN-LAST:event_deleteIconMouseClicked
+
+    private void logoutMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutMouseClicked
+        int _temp = JOptionPane.showConfirmDialog(null, "Confirm Logout ...", "LOGOUT", JOptionPane.YES_NO_OPTION);
+            if( _temp == 0){
+                Login log = new Login();
+                log.show();  
+                dispose();
+            }
+    }//GEN-LAST:event_logoutMouseClicked
+
+    private void menuIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_menuIconMouseClicked
+       if (drawer.isShow()) {
+            drawer.hide();
+        } else {
+            drawer.show();
+        }
+    }//GEN-LAST:event_menuIconMouseClicked
 
     
     

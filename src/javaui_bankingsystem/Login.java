@@ -1,31 +1,25 @@
 
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
-import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import javax.swing.ImageIcon;
 import static javaui_bankingsystem.MainFrame.*;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
 
 
 
-public class Login extends javax.swing.JFrame {
+public class Login extends javax.swing.JFrame implements Admin_Data{
 
-    private static final String username = "root";
-    private static final String password = "";
-    private static final String database = "jdbc:mysql://localhost/finance_fox";
     public String uname,pass,disName;
     
     
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon foxSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg",430,430);
+
     public Login() {
         initComponents();
         //set icon

@@ -1,14 +1,10 @@
 
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
-import java.awt.Image;
-import javax.swing.ImageIcon;
+import admin.Admin_Data;
 
-public class Contact extends javax.swing.JFrame {
+public class Contact extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
     public Contact() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

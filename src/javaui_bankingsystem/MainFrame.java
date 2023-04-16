@@ -2,11 +2,10 @@
 package javaui_bankingsystem;
 
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
 import design.TableCustom;
 import java.awt.Color;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -21,54 +20,22 @@ import javaswingdev.drawer.Drawer;
 import javaswingdev.drawer.DrawerController;
 import javaswingdev.drawer.DrawerItem;
 import javaswingdev.drawer.EventDrawer;
-import static javaui_bankingsystem.Message.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-//test
-
-public class MainFrame extends javax.swing.JFrame {
+public class MainFrame extends javax.swing.JFrame implements Admin_Data{
 
     private final DrawerController drawer;
-    static final String username = "root";
-    static final String password = "";
-    static final String database = "jdbc:mysql://localhost/finance_fox";
     static int q, i;
     static String value, userNameDis = "";
     static Double balance = 0.0, currentValue = 0.0;
     static String[] info = {"0","1","2","3","4","5","6"};
     
-    
     static Connection sqlConn = null;
     static PreparedStatement pst = null;
     static ResultSet rs = null;
     static DefaultTableModel RecordTable;
-    
-    //image loader
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon menuBarsSVG = new FlatSVGIcon("icon/MenuBars.svg",20,20);
-    ImageIcon profileSVG = new FlatSVGIcon("icon/User.svg",70,70);
-    //side bar menu icons
-    ImageIcon homeSVG = new FlatSVGIcon("icon/Home.svg",20,20);
-    ImageIcon mbInboxSVG = new FlatSVGIcon("icon/Inbox.svg",20,20);
-    ImageIcon settingsSVG = new FlatSVGIcon("icon/Settings.svg",20,20);
-    ImageIcon contactSVG = new FlatSVGIcon("icon/Contact Us.svg",20,20);
-    ImageIcon logoutSVG = new FlatSVGIcon("icon/Logout.svg",20,20);
-    ImageIcon mbSearchSVG = new FlatSVGIcon("icon/Search_Icon.svg",20,20);
-   
-    ImageIcon copySVG = new FlatSVGIcon("icon/Copy.svg",20,20);
-    ImageIcon infoSVG = new FlatSVGIcon("icon/Info.svg",30,30);
-    //bank functionality
-    ImageIcon plusSVG = new FlatSVGIcon("icon/Plus Circle.svg",38,38);
-    ImageIcon depositSVG = new FlatSVGIcon("icon/Deposit.svg",30,30);
-    ImageIcon withdrawSVG = new FlatSVGIcon("icon/Withdraw.svg",30,30);
-    ImageIcon transferFundsSVG = new FlatSVGIcon("icon/Transfer Funds.svg",30,30);
-    ImageIcon payBillsSVG = new FlatSVGIcon("icon/PayBills.svg",30,30);
-    ImageIcon searchSVG = new FlatSVGIcon("icon/Search_Icon.svg",30,30);
-    ImageIcon transactionHistorySVG = new FlatSVGIcon("icon/Transaction History.svg",30,30);
-    ImageIcon inboxSVG = new FlatSVGIcon("icon/Inbox.svg",30,30);
-    
- 
+
     public MainFrame() {
         
         initComponents();

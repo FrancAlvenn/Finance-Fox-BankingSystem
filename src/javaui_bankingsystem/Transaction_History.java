@@ -4,20 +4,57 @@
  */
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
+import static admin.Admin_Data.database;
+import static admin.Admin_Data.password;
+import static admin.Admin_Data.username;
 import design.TableCustom;
-import java.awt.Image;
+import java.sql.DriverManager;
+import java.sql.ResultSetMetaData;
+import java.sql.SQLException;
+import java.util.Vector;
 import static javaui_bankingsystem.MainFrame.*;
-import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Administrator
  */
-public class Transaction_History extends javax.swing.JFrame {
+public class Transaction_History extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
+    
+    public static void updateDB(){
+        try{
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            sqlConn = DriverManager.getConnection(database,username,password);
+            pst = sqlConn.prepareStatement("SELECT * FROM finance_fox." + value);
+            //pst.setString(1, value);
+            rs = pst.executeQuery();
+            ResultSetMetaData stData = rs.getMetaData();
+            
+            q = stData.getColumnCount();
+            RecordTable = (DefaultTableModel)dataTable.getModel();
+            RecordTable.setRowCount(0);
+            while(rs.next()){
+                   Vector columnData = new Vector();
+                  
+                   for(i = 1;i <= q;i++){
+                       columnData.add(rs.getString("ID"));
+                       columnData.add(rs.getString("DATE"));
+                       columnData.add(rs.getString("DESCRIPTION"));
+                       columnData.add(rs.getDouble("AMOUNT"));
+                       columnData.add(rs.getDouble("BALANCE"));
+                   }
+                   RecordTable.addRow(columnData); 
+               }
+             
+               
+        }catch(ClassNotFoundException | SQLException ex){
+            java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null,ex);
+            //JOptionPane.showMessageDialog(null, ex);
+    }
+    }
+    
     public Transaction_History() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

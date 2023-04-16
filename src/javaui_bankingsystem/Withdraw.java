@@ -4,11 +4,9 @@
  */
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
-import java.awt.Image;
 import static javaui_bankingsystem.MainFrame.*;
-import javax.swing.*;
 import java.sql.*;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
@@ -17,10 +15,8 @@ import static javaui_bankingsystem.Message.msgtitle;
  *
  * @author Administrator
  */
-public class Withdraw extends javax.swing.JFrame {
+public class Withdraw extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
     public Withdraw() {
         initComponents();
         GlassPanePopup.install(this);
