@@ -4,45 +4,32 @@
  */
 package admin;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import design.GlassPanePopup;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Random;
-import javaswingdev.drawer.DrawerController;
-import javax.swing.ImageIcon;
 import javaui_bankingsystem.*;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrator
  */
-public class Add_Profile extends javax.swing.JFrame {
+public class Add_Profile extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
-    
-    static final String username = "root";
-    static final String pass = "";
-    static final String database = "jdbc:mysql://localhost/finance_fox";
+
     static String[] info = {"0","1","2","3","4","5","6"};
     
     
     static Connection sqlConn = null;
     static PreparedStatement pst = null;
-    static ResultSet rs = null;
     
-    ImageIcon copySVG = new FlatSVGIcon("icon/Copy.svg",20,20);
     public Add_Profile() {
         initComponents();
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
@@ -86,7 +73,7 @@ public class Add_Profile extends javax.swing.JFrame {
         citizenship = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
+        pass = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
@@ -184,7 +171,7 @@ public class Add_Profile extends javax.swing.JFrame {
         jLabel20.setBackground(new java.awt.Color(0, 153, 255));
         jLabel20.setOpaque(true);
 
-        password.setBorder(null);
+        pass.setBorder(null);
 
         jLabel21.setText("Password");
 
@@ -286,7 +273,7 @@ public class Add_Profile extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel21)
-                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(71, 71, 71)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel27)
@@ -393,7 +380,7 @@ public class Add_Profile extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel21)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -441,7 +428,7 @@ public class Add_Profile extends javax.swing.JFrame {
             //add user into database
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                sqlConn = DriverManager.getConnection(database,username,pass);
+                sqlConn = DriverManager.getConnection(database,username,password);
 
                 //creates table for the first time
                 String sql = """
@@ -485,7 +472,7 @@ public class Add_Profile extends javax.swing.JFrame {
                 pst.setString(8,occupation.getText());
                 pst.setString(9,email.getText());
                 pst.setString(10,initialDeposit.getText());
-                pst.setString(11,password.getText());
+                pst.setString(11,pass.getText());
                 
                 pst.executeUpdate();
 
@@ -614,7 +601,7 @@ public class Add_Profile extends javax.swing.JFrame {
     private javax.swing.JTextField maritalStatus;
     private javax.swing.JTextField name;
     private javax.swing.JTextField occupation;
-    private javax.swing.JTextField password;
+    private javax.swing.JTextField pass;
     private javax.swing.JTextField phoneNumber;
     // End of variables declaration//GEN-END:variables
 }

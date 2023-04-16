@@ -5,10 +5,7 @@
 package admin;
 
 
-import static admin.Add_Profile.username;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import design.GlassPanePopup;
-import java.awt.Image;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -17,26 +14,16 @@ import java.sql.SQLException;
 import javaui_bankingsystem.*;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
-import javaui_bankingsystem.Signup;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
 
 /**
  *
  * @author Administrator
  */
-public class Delete extends javax.swing.JFrame {
+public class Delete extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
-    ImageIcon searchSVG = new FlatSVGIcon("icon/Search_Icon.svg",20,20);
-    static Connection sqlConn = null;
-    static PreparedStatement pst = null;
-    static ResultSet rs = null;
+
     
-    static final String username = "root";
-    static final String pass = "";
-    static final String database = "jdbc:mysql://localhost/finance_fox";
+
     
     public Delete() {
         initComponents();
@@ -60,7 +47,7 @@ public class Delete extends javax.swing.JFrame {
         name = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
-        password = new javax.swing.JTextField();
+        pass = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         phoneNumber = new javax.swing.JTextField();
@@ -119,9 +106,14 @@ public class Delete extends javax.swing.JFrame {
         jLabel20.setBackground(new java.awt.Color(0, 153, 255));
         jLabel20.setOpaque(true);
 
-        password.setEditable(false);
-        password.setBackground(new java.awt.Color(255, 255, 255));
-        password.setBorder(null);
+        pass.setEditable(false);
+        pass.setBackground(new java.awt.Color(255, 255, 255));
+        pass.setBorder(null);
+        pass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passActionPerformed(evt);
+            }
+        });
 
         jLabel8.setBackground(new java.awt.Color(0, 153, 255));
         jLabel8.setOpaque(true);
@@ -298,7 +290,7 @@ public class Delete extends javax.swing.JFrame {
                                                 .addComponent(citizenship)
                                                 .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                                 .addComponent(address, javax.swing.GroupLayout.PREFERRED_SIZE, 483, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGroup(jPanel1Layout.createSequentialGroup()
                             .addGap(20, 20, 20)
                             .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 958, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -390,7 +382,7 @@ public class Delete extends javax.swing.JFrame {
                     .addGap(18, 18, 18)
                     .addComponent(jLabel21)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                    .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                     .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addContainerGap(165, Short.MAX_VALUE)))
@@ -421,8 +413,7 @@ public class Delete extends javax.swing.JFrame {
         if(adminSignature.getText().equals("financefox")){
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                sqlConn = DriverManager.getConnection(database,username,pass);
-                Connection connection = DriverManager.getConnection(database, username, pass);
+                Connection connection = DriverManager.getConnection(database, username, password);
                 ResultSet rs;
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM `bank_user` WHERE `Account_Number` = ?");
                 statement.setString(1, accountNumber.getText());
@@ -439,7 +430,7 @@ public class Delete extends javax.swing.JFrame {
                 email.setText("");
                 phoneNumber.setText("");
                 address.setText("");
-                password.setText("");
+                pass.setText("");
                 balance.setText("");
                 adminSignature.setText("");
                 accountNumber.setText("");
@@ -470,8 +461,7 @@ public class Delete extends javax.swing.JFrame {
     private void searchIconMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchIconMouseClicked
         try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                sqlConn = DriverManager.getConnection(database,username,pass);
-                Connection connection = DriverManager.getConnection(database, username, pass);
+                Connection connection = DriverManager.getConnection(database, username, password);
                 ResultSet rs;
                 PreparedStatement statement = connection.prepareStatement("SELECT * FROM `bank_user` WHERE `Account_Number` = ?");
                 statement.setString(1, accountNumber.getText());
@@ -489,7 +479,7 @@ public class Delete extends javax.swing.JFrame {
                 email.setText(resultSet.getString("Email"));
                 phoneNumber.setText(resultSet.getString("Phone_Number"));
                 address.setText(resultSet.getString("Address"));
-                password.setText(resultSet.getString("Password"));
+                pass.setText(resultSet.getString("Password"));
                 balance.setText(resultSet.getString("Balance"));
                 }else{
                     msgtitle = "NOTICE!";
@@ -504,6 +494,10 @@ public class Delete extends javax.swing.JFrame {
                 GlassPanePopup.showPopup(new Message());
             }
     }//GEN-LAST:event_searchIconMouseClicked
+
+    private void passActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passActionPerformed
 
     
     public static void main(String args[]) {
@@ -575,7 +569,7 @@ public class Delete extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField maritalStatus;
     private javax.swing.JTextField name;
-    private javax.swing.JTextField password;
+    private javax.swing.JTextField pass;
     private javax.swing.JTextField phoneNumber;
     private javax.swing.JLabel searchIcon;
     // End of variables declaration//GEN-END:variables

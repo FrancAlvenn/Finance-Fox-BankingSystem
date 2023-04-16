@@ -3,24 +3,19 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package javaui_bankingsystem;
+import admin.Admin_Data;
 import java.sql.*;
-import com.formdev.flatlaf.extras.FlatSVGIcon;
 import design.GlassPanePopup;
-import java.awt.*;
 import static javaui_bankingsystem.MainFrame.*;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
 import javax.swing.*;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
 /**
  *
  * @author Administrator
  */
-public class TransferFunds extends javax.swing.JFrame {
+public class TransferFunds extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
-    ImageIcon searchSVG = new FlatSVGIcon("icon/Search_Icon.svg",20,20);
     public TransferFunds() {
         initComponents();
         GlassPanePopup.install(this);

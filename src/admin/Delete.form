@@ -143,7 +143,7 @@
                                       </Group>
                                   </Group>
                                   <Component id="address" alignment="0" min="-2" pref="483" max="-2" attributes="0"/>
-                                  <Component id="password" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
+                                  <Component id="pass" alignment="0" min="-2" pref="218" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -254,7 +254,7 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jLabel21" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="password" min="-2" max="-2" attributes="0"/>
+                      <Component id="pass" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jLabel22" min="-2" pref="1" max="-2" attributes="0"/>
                       <EmptySpace pref="165" max="32767" attributes="0"/>
@@ -319,7 +319,7 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="password">
+        <Component class="javax.swing.JTextField" name="pass">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -329,6 +329,9 @@
               <Border info="null"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="passActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>

@@ -1,21 +1,15 @@
 
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
-import java.awt.Image;
 import java.sql.*;
 import static javaui_bankingsystem.MainFrame.*;
 import static javaui_bankingsystem.Message.*;
-import javax.swing.ImageIcon;
-import javax.swing.JOptionPane;
-import static javax.swing.JOptionPane.ERROR_MESSAGE;
 
 
-public class Deposit extends javax.swing.JFrame {
+public class Deposit extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
     public Deposit() {
         initComponents();
         GlassPanePopup.install(this);

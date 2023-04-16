@@ -1,18 +1,14 @@
 
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
-import java.awt.Image;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
-import javax.swing.ImageIcon;
 import static javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE;
 
-public class Inbox extends javax.swing.JFrame {
+public class Inbox extends javax.swing.JFrame implements Admin_Data{
 
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
     public Inbox() {
         initComponents();
         GlassPanePopup.install(this);

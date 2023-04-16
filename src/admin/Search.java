@@ -8,7 +8,7 @@ package admin;
  *
  * @author Administrator
  */
-public class Search extends javax.swing.JFrame {
+public class Search extends javax.swing.JFrame implements Admin_Data{
 
     /**
      * Creates new form Search

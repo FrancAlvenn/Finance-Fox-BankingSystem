@@ -1,8 +1,7 @@
 package javaui_bankingsystem;
 
-import com.formdev.flatlaf.extras.FlatSVGIcon;
+import admin.Admin_Data;
 import design.GlassPanePopup;
-import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.StringSelection;
@@ -11,53 +10,34 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
-import java.util.Random;
-import static javaui_bankingsystem.MainFrame.currentValue;
 import static javaui_bankingsystem.Message.msgbody;
 import static javaui_bankingsystem.Message.msgtitle;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
  * @author Franc Alvenn Dela Cruz
  */
-public class Signup extends javax.swing.JFrame {
-
-    static Random rand = new Random();
-    static Integer AccountNumber;
-    
+public class Signup extends javax.swing.JFrame implements Admin_Data{
     //Database Connectivity
-    private static final String username = "root";
-    private static final String pass = "";
-    private static final String database = "jdbc:mysql://localhost/finance_fox";
-    int q;
-    
     Connection sqlConn = null;
     PreparedStatement pst = null;
     ResultSet rs = null;
     
-    
-    
     public void updateDB(){
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
-            sqlConn = DriverManager.getConnection(database,username,pass);
+            sqlConn = DriverManager.getConnection(database,username,password);
             pst = sqlConn.prepareStatement("select * from bank_user");
             rs = pst.executeQuery();
             ResultSetMetaData stData = rs.getMetaData();
-            
-            q = stData.getColumnCount();
-            
-           
+            stData.getColumnCount();
     }catch(Exception ex){
         //JOptionPane.showMessageDialog(null, ex);
     }
     }//End of Database Connectivity
     
-    //image icon setter
-    Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
-    ImageIcon iconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg",70,70);
-    ImageIcon copySVG = new FlatSVGIcon("icon/Copy.svg",20,20);
+
+
     public Signup() {
         initComponents();
         //updateDB();
@@ -65,9 +45,7 @@ public class Signup extends javax.swing.JFrame {
         this.setIconImage(brandIconSVG);
         icon.setIcon(iconSVG);
         copy.setIcon(copySVG);
-        GlassPanePopup.install(this);
-        
-        
+        GlassPanePopup.install(this);  
     }
 
 
@@ -125,7 +103,7 @@ public class Signup extends javax.swing.JFrame {
         initialDeposit = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
         jLabel39 = new javax.swing.JLabel();
-        password = new javax.swing.JPasswordField();
+        pass = new javax.swing.JPasswordField();
         customButton1 = new design.CustomButton();
         accountNumber = new javax.swing.JTextField();
         jLabel40 = new javax.swing.JLabel();
@@ -286,7 +264,7 @@ public class Signup extends javax.swing.JFrame {
 
         jLabel39.setText("Initial Deposited Amount");
 
-        password.setBorder(null);
+        pass.setBorder(null);
 
         customButton1.setBackground(new java.awt.Color(0, 153, 255));
         customButton1.setText("Signup");
@@ -438,7 +416,7 @@ public class Signup extends javax.swing.JFrame {
                                             .addGap(3, 3, 3)
                                             .addComponent(jLabel32))
                                         .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 218, javax.swing.GroupLayout.PREFERRED_SIZE))))
                                 .addGap(18, 18, 18)
                                 .addComponent(copy, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))))
@@ -545,7 +523,7 @@ public class Signup extends javax.swing.JFrame {
                 .addGap(50, 50, 50)
                 .addComponent(jLabel32)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(4, 4, 4)
                 .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 1, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(49, 49, 49)
@@ -595,7 +573,7 @@ public class Signup extends javax.swing.JFrame {
             //add user into database
             try{
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                sqlConn = DriverManager.getConnection(database,username,pass);
+                sqlConn = DriverManager.getConnection(database,username,password);
 
                 //creates table for the first time
                 String sql = """
@@ -639,7 +617,7 @@ public class Signup extends javax.swing.JFrame {
                 pst.setString(8,occupation.getText());
                 pst.setString(9,email.getText());
                 pst.setString(10,initialDeposit.getText());
-                pst.setString(11,password.getText());
+                pst.setString(11,pass.getText());
                 
                 pst.executeUpdate();
 
@@ -670,7 +648,7 @@ public class Signup extends javax.swing.JFrame {
     }//GEN-LAST:event_customButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        AccountNumber = rand.nextInt(100000000, 999999999);
+        
         accountNumber.setText(AccountNumber.toString());
     }//GEN-LAST:event_formWindowOpened
 
@@ -777,7 +755,7 @@ public class Signup extends javax.swing.JFrame {
     private design.JScrollPaneCustom jScrollPaneCustom1;
     private javax.swing.JTextField maritalStatus;
     private javax.swing.JTextField occupation;
-    private javax.swing.JPasswordField password;
+    private javax.swing.JPasswordField pass;
     private javax.swing.JTextField phoneNumber;
     // End of variables declaration//GEN-END:variables
 }
