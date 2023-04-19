@@ -26,6 +26,7 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
         //set icon
         this.setIconImage(brandIconSVG);
         fox.setIcon(foxSVG);
+        GlassPanePopup.install(this);
     }
     
     
@@ -108,6 +109,11 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Finance Fox");
         setBackground(new java.awt.Color(236, 237, 239));
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -272,20 +278,28 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
 
     private void btnLogInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLogInActionPerformed
         PreparedStatement ps;
+        PreparedStatement aps;
         ResultSet rs;
+        ResultSet ars;
         uname = loginNumber.getText();
         pass = String.valueOf(loginPassword.getPassword());
         
         String query = "SELECT * FROM `bank_user` WHERE `Account_Number` = ? AND `Password` = ?";
+        String adminQuery = "SELECT * FROM `admin_user` WHERE `Account_Number` = ? AND `Password` = ?";
+        int loop = 0;
+        
         
         try {
             ps = Login.getConnection().prepareStatement(query);
-            
             ps.setString(1, uname);
             ps.setString(2, pass);
-            
             rs = ps.executeQuery();
 
+            aps = Login.getConnection().prepareStatement(adminQuery);
+            aps.setString(1, uname);
+            aps.setString(2, pass);
+            ars = aps.executeQuery();
+            
             if(rs.next())
             {
                     getInformation();
@@ -299,21 +313,45 @@ public class Login extends javax.swing.JFrame implements Admin_Data{
                     Ui.pack();
                     Ui.setLocationRelativeTo(null); 
                     this.dispose();
-            }else if(uname.equals("admin") && pass.equals("admin")){
+                    
+            }else if(ars.next()){
                 Admin_Dashboard ad = new Admin_Dashboard();
                 ad.show();
                 dispose();
+               
             }
             else{
                 msgtitle = "NOTICE!";
                 msgbody = ("Incorrect Username Or Password! Please try again!");
                 GlassPanePopup.showPopup(new Message());
             }
-            
         } catch (SQLException ex) {
             java.util.logging.Logger.getLogger(Login.class.getName()).log(java.util.logging.Level.SEVERE, null,ex);
-        }
+        }//end of catch
+        
+        
     }//GEN-LAST:event_btnLogInActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
+        PreparedStatement pst = null;
+        try{
+                Class.forName("com.mysql.cj.jdbc.Driver");
+                sqlConn = DriverManager.getConnection(database,username,password);
+                
+                
+                String sql = Admin_Data.createAdminTable;
+                pst = sqlConn.prepareStatement(sql);
+                pst.executeUpdate(sql);
+                pst = sqlConn.prepareStatement(sql);
+                sql = Admin_Data.createAdminUser;
+                pst.executeUpdate(sql);
+        }catch(ClassNotFoundException | SQLException ex){
+                java.util.logging.Logger.getLogger(Signup.class.getName()).log(java.util.logging.Level.SEVERE, null,ex);
+            }
+        
+        
+    }//GEN-LAST:event_formWindowOpened
 
     
     public static void main(String args[]) {
