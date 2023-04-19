@@ -14,6 +14,8 @@ public interface Admin_Data {
     static Random rand = new Random();
     static Integer AccountNumber = rand.nextInt(100000000, 999999999);
     
+    
+    
     ImageIcon foxSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg",430,430);
     ImageIcon menuBarsSVG = new FlatSVGIcon("icon/MenuBars.svg",20,20);
     Image brandIconSVG = new FlatSVGIcon("icon/Brand Logo (NG).svg").getImage();
@@ -39,5 +41,23 @@ public interface Admin_Data {
     ImageIcon transactionHistorySVG = new FlatSVGIcon("icon/Transaction History.svg",30,30);
     ImageIcon inboxSVG = new FlatSVGIcon("icon/Inbox.svg",30,30);
     ImageIcon closeSVG = new FlatSVGIcon("icon/Close.svg",30,30);
+    
+    
+    static final String createAdminTable = ("""
+                                           CREATE TABLE IF NOT EXISTS `finance_fox`.`admin_user` (
+                                            `ID` INT NOT NULL AUTO_INCREMENT,
+                                            `Account_Number` VARCHAR(10) NOT NULL,
+                                            `Name` VARCHAR(100) NOT NULL,
+                                            `Password` VARCHAR(100) NOT NULL,
+                                            PRIMARY KEY (`ID`, `Account_Number`));
+                                           """);
+    
+    static final String createAdminUser = ("""
+                                               INSERT INTO admin_user(Account_Number,Name,Password) 
+                                               SELECT * FROM (SELECT 'admin', 'Franc Alvenn Dela Cruz', 'financefox') AS tmp
+                                               WHERE NOT EXISTS (
+                                                    SELECT Name FROM admin_user WHERE Name = 'Franc Alvenn Dela Cruz'
+                                               ) LIMIT 1;
+                                           """);
     
 }
