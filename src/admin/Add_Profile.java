@@ -448,9 +448,9 @@ public class Add_Profile extends javax.swing.JFrame implements Admin_Data{
                   PRIMARY KEY (`ID`, `Account_Number`));""";
                 pst = sqlConn.prepareStatement(sql);
                 pst.executeUpdate();
+                    
 
                 
-
                 pst = sqlConn.prepareStatement("""
                                                INSERT INTO `bank_user`
                                                (Account_Number,Name,Phone_Number,Gender,Address,Citizenship,
@@ -484,7 +484,7 @@ public class Add_Profile extends javax.swing.JFrame implements Admin_Data{
                 "`BALANCE` DECIMAL(20, 2) NOT NULL," +
                 "PRIMARY KEY (`ID`))";
                 pst = sqlConn.prepareStatement(sql);
-                pst.executeUpdate();
+                pst.executeUpdate();        
 
                 sql = "INSERT INTO `" + accountNumber.getText() + "` (`DESCRIPTION`, `AMOUNT`, `BALANCE`) " +
                 "VALUES ('INITIAL DEPOSIT', " + initialDeposit.getText() + ", " + initialDeposit.getText() + ")";
