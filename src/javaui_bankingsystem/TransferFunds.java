@@ -270,7 +270,7 @@ public class TransferFunds extends javax.swing.JFrame implements Admin_Data{
                 resultSet.next();
                 
                 // Close the database connection
-                connection.close();
+                
                 
                 //Confirmation Message
                 msgtitle = "TRANSACTION COMPLETE!";
@@ -279,7 +279,7 @@ public class TransferFunds extends javax.swing.JFrame implements Admin_Data{
                 GlassPanePopup.showPopup(new Message());
             
                 transferAmount.setText("");
-                
+                connection.close();
                 
             } catch (SQLException ex) {
                 

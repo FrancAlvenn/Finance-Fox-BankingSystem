@@ -218,7 +218,7 @@ public class PayBills extends javax.swing.JFrame implements Admin_Data{
                 
                 //Confirmation Message
                 msgtitle = "TRANSACTION COMPLETE!";
-                msgbody = ("You have paid an amount of: ₱ " + payBillsAmount.getText() + " to "+typeOfUtility + "! Your current balance is: ₱ "
+                msgbody = ("You have paid an amount of: ₱ " + payBillsAmount.getText() + " to "+typeOfUtility.getText() + "! Your current balance is: ₱ "
                         + currentValue +"! \nThank you for using Finance Fox Banking!");
                 GlassPanePopup.showPopup(new Message());
             
